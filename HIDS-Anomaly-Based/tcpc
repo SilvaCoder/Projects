@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ "$1" == "update" ]
+then
+
+cp -r /home/marco/workspace/TCPCapture/bin/* /var/tcpc/bin/
+
+rm -rf /var/tcpc/bin/jnetpcap.jar
+
+echo "updated"
+
+else
+
+java -cp /var/tcpc/bin/ Main $@
+
+fi
