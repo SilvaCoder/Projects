@@ -1,0 +1,39 @@
+#!/bin/bash
+
+if [ "$1" == "update" ]
+then
+
+cp -r /home/marco/workspace/TCPCapture/bin/* /var/tcpc/bin/
+
+rm -rf /var/tcpc/bin/jnetpcap.jar
+
+echo "updated"
+
+elif [ "$1" == "stash" ]
+then
+
+mkdir -p /var/tcpc/stash
+
+cp -r /var/tcpc/bin/* /var/tcpc/stash/
+
+echo "stashedddddd"
+
+elif ["$1" == "savestash" ]
+then
+
+mkdir -p /var/tcpc/savedStash$(date)
+
+echo "stash saved"
+
+elif [ "$1" == "restore" ]
+then
+
+cp -r /var/tcpc/stash/* /var/tcpc/bin/
+
+echo "restored"
+
+else
+
+java -d64 -Xms2g -Xmx2g -Dnio.mx=5gb -cp /var/tcpc/bin/ Main $@
+
+fi
