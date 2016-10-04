@@ -32,6 +32,18 @@ cp -r /var/tcpc/stash/* /var/tcpc/bin/
 
 echo "restored"
 
+elif [ "$1" == "gitpush" ]
+then
+
+cp -r /var/tcpc/bin/* /home/marco/Documents/Projects/HIDS-Anomaly-Based/tcpc2.0
+cd /home/marco/Documents/Projects/HIDS-Anomaly-Based/tcpc2.0
+
+git add -A
+git commit -m "New release"
+git push
+
+echo "New version released!"
+
 else
 
 java -d64 -Xms2g -Xmx2g -Dnio.mx=5gb -cp /var/tcpc/bin/ Main $@
